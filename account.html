@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - CeyGem</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-gem me-2"></i>CeyGem
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Gems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="submit-ad.html">Submit Ad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.html">Messages</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-2"></i>John Doe
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item active" href="account.html"><i class="fas fa-user me-2"></i>My Account</a></li>
+                        <li><a class="dropdown-item" href="my-listings.html"><i class="fas fa-list me-2"></i>My Listings</a></li>
+                        <li><a class="dropdown-item" href="favorites.html"><i class="fas fa-heart me-2"></i>Favorites</a></li>
+                        <li><a class="dropdown-item" href="messages.html"><i class="fas fa-envelope me-2"></i>Messages</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4">My Account</h2>
+            <div class="row">
+                <!-- Account Sidebar -->
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center py-5">
+                            <div class="mb-3">
+                                <img src="https://via.placeholder.com/150" class="rounded-circle img-thumbnail" alt="Profile Picture">
+                            </div>
+                            <h5 class="mb-1">John Doe</h5>
+                            <p class="text-muted mb-3">john.doe@example.com</p>
+                            <p>
+                                <span class="badge bg-success">Verified Seller</span>
+                                <span class="badge bg-primary ms-1">Premium Member</span>
+                            </p>
+                            <button class="btn btn-sm btn-outline-primary mt-2">
+                                <i class="fas fa-camera me-2"></i>Change Photo
+                            </button>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="account.html" class="list-group-item list-group-item-action active">
+                                <i class="fas fa-user me-2"></i>Profile
+                            </a>
+                            <a href="my-listings.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-list me-2"></i>My Listings
+                                <span class="badge bg-primary rounded-pill float-end">12</span>
+                            </a>
+                            <a href="messages.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-envelope me-2"></i>Messages
+                                <span class="badge bg-danger rounded-pill float-end">3</span>
+                            </a>
+                            <a href="favorites.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-heart me-2"></i>Favorites
+                                <span class="badge bg-primary rounded-pill float-end">7</span>
+                            </a>
+                            <a href="transactions.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-exchange-alt me-2"></i>Transactions
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account Main Content -->
+                <div class="col-lg-9">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Profile Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" value="John">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" value="Doe">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" value="john.doe@example.com" readonly>
+                                    <div class="form-text">To change your email, please contact support.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" value="+1 (555) 123-4567">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="location" value="New York, USA">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bio" class="form-label">About Me</label>
+                                    <textarea class="form-control" id="bio" rows="3">Gem collector and dealer specializing in precious stones from Asia and Africa. Over 10 years of experience in the gemstone industry.</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Account Security</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="securityForm">
+                                <div class="mb-3">
+                                    <label for="currentPassword" class="form-label">Current Password</label>
+                                    <input type="password" class="form-control" id="currentPassword">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">New Password</label>
+                                    <input type="password" class="form-control" id="newPassword">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Notification Preferences</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="notificationForm">
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailNotifications" checked>
+                                    <label class="form-check-label" for="emailNotifications">Email Notifications</label>
+                                    <div class="form-text">Receive updates about new messages, transactions, and marketplace news.</div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="smsNotifications">
+                                    <label class="form-check-label" for="smsNotifications">SMS Notifications</label>
+                                    <div class="form-text">Receive text messages for important account activities.</div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="marketingEmails" checked>
+                                    <label class="form-check-label" for="marketingEmails">Marketing Emails</label>
+                                    <div class="form-text">Stay updated with promotions, new features, and special offers.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Preferences</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5><i class="fas fa-gem me-2"></i>CeyGem</h5>
+                    <p class="small">The premier marketplace for high-quality gemstones and jewelry.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="browse.html" class="text-decoration-none text-white-50">Browse Gems</a></li>
+                        <li><a href="submit-ad.html" class="text-decoration-none text-white-50">Submit Ad</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-decoration-none text-white-50">Login</a></li>
+                        <li><a href="register.html" class="text-decoration-none text-white-50">Register</a></li>
+                        <li><a href="account.html" class="text-decoration-none text-white-50">My Account</a></li>
+                        <li><a href="messages.html" class="text-decoration-none text-white-50">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p class="small">Subscribe to receive updates on new gem listings and marketplace news.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2025 CeyGem. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-white-50">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // For demo purposes only - would be replaced with actual API call
+            alert('Profile updated successfully!');
+        });
+        
+        // Security form submission
+        document.getElementById('securityForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+            
+            // For demo purposes only - would be replaced with actual API call
+            alert('Password updated successfully!');
+            
+            // Clear form fields
+            this.reset();
+        });
+        
+        // Notification preferences form submission
+        document.getElementById('notificationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // For demo purposes only - would be replaced with actual API call
+            alert('Notification preferences saved!');
+        });
+    </script>
+</body>
+</html>

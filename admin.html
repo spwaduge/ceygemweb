@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CeyGem</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-gem me-2"></i>CeyGem <span class="badge bg-light text-primary ms-1">Admin</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-users.html">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-listings.html">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-reports.html">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-settings.html">Settings</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-shield me-2"></i>Admin User
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" href="admin-profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="admin-settings.html"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <div class="container-fluid py-4">
+        <div class="row g-3">
+            <!-- Sidebar -->
+            <div class="col-lg-2">
+                <div class="list-group shadow-sm">
+                    <a href="admin.html" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                    <a href="admin-users.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-users me-2"></i>Users
+                        <span class="badge bg-primary rounded-pill float-end">1,254</span>
+                    </a>
+                    <a href="admin-listings.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-list me-2"></i>Listings
+                        <span class="badge bg-primary rounded-pill float-end">876</span>
+                    </a>
+                    <a href="admin-pending.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-clock me-2"></i>Pending Approval
+                        <span class="badge bg-danger rounded-pill float-end">24</span>
+                    </a>
+                    <a href="admin-transactions.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-exchange-alt me-2"></i>Transactions
+                        <span class="badge bg-primary rounded-pill float-end">132</span>
+                    </a>
+                    <a href="admin-reports.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-flag me-2"></i>Reports
+                        <span class="badge bg-warning rounded-pill float-end">8</span>
+                    </a>
+                    <a href="admin-messages.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-envelope me-2"></i>Messages
+                        <span class="badge bg-primary rounded-pill float-end">42</span>
+                    </a>
+                    <a href="admin-analytics.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-chart-bar me-2"></i>Analytics
+                    </a>
+                    <a href="admin-settings.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-cog me-2"></i>Settings
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-lg-10">
+                <h2 class="mb-4">CeyGem Admin Dashboard</h2>
+                
+                <!-- Stats Cards -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="card bg-primary text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Total Users</h6>
+                                        <h3 class="mb-0">1,254</h3>
+                                    </div>
+                                    <i class="fas fa-users fa-2x opacity-50"></i>
+                                </div>
+                                <p class="card-text mt-2 mb-0"><small>+12 new today</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Active Listings</h6>
+                                        <h3 class="mb-0">876</h3>
+                                    </div>
+                                    <i class="fas fa-gem fa-2x opacity-50"></i>
+                                </div>
+                                <p class="card-text mt-2 mb-0"><small>+8 new today</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-warning text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Pending Approval</h6>
+                                        <h3 class="mb-0">24</h3>
+                                    </div>
+                                    <i class="fas fa-clock fa-2x opacity-50"></i>
+                                </div>
+                                <p class="card-text mt-2 mb-0"><small>5 require urgent review</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-info text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Total Revenue</h6>
+                                        <h3 class="mb-0">$24,856</h3>
+                                    </div>
+                                    <i class="fas fa-dollar-sign fa-2x opacity-50"></i>
+                                </div>
+                                <p class="card-text mt-2 mb-0"><small>+$1,245 this month</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pending Ads for Approval -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Pending Ads for Approval</h5>
+                        <a href="admin-pending.html" class="btn btn-sm btn-primary">View All Pending</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pendingAdsTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Seller</th>
+                                        <th scope="col">Date Submitted</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#AD3245</td>
+                                        <td><img src="https://via.placeholder.com/50x50?text=Ruby" class="rounded" alt="Ruby"></td>
+                                        <td>Natural Ruby - 2.5 Carats</td>
+                                        <td>GemCollector21</td>
+                                        <td>2025-03-15</td>
+                                        <td>$1,895</td>
+                                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success me-1" data-bs-toggle="tooltip" title="Approve"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-sm btn-danger me-1" data-bs-toggle="tooltip" title="Reject"><i class="fas fa-times"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="View Details"><i class="fas fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#AD3244</td>
+                                        <td><img src="https://via.placeholder.com/50x50?text=Diamond" class="rounded" alt="Diamond"></td>
+                                        <td>Round Brilliant Diamond - 1 Carat</td>
+                                        <td>DiamondExpert</td>
+                                        <td>2025-03-15</td>
+                                        <td>$5,250</td>
+                                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success me-1" data-bs-toggle="tooltip" title="Approve"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-sm btn-danger me-1" data-bs-toggle="tooltip" title="Reject"><i class="fas fa-times"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="View Details"><i class="fas fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#AD3243</td>
+                                        <td><img src="https://via.placeholder.com/50x50?text=Emerald" class="rounded" alt="Emerald"></td>
+                                        <td>Colombian Emerald - 3 Carats</td>
+                                        <td>GemBazaar</td>
+                                        <td>2025-03-14</td>
+                                        <td>$4,500</td>
+                                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success me-1" data-bs-toggle="tooltip" title="Approve"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-sm btn-danger me-1" data-bs-toggle="tooltip" title="Reject"><i class="fas fa-times"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="View Details"><i class="fas fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#AD3242</td>
+                                        <td><img src="https://via.placeholder.com/50x50?text=Sapphire" class="rounded" alt="Sapphire"></td>
+                                        <td>Blue Sapphire - 1.8 Carats</td>
+                                        <td>RareGemsCollection</td>
+                                        <td>2025-03-14</td>
+                                        <td>$2,100</td>
+                                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success me-1" data-bs-toggle="tooltip" title="Approve"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-sm btn-danger me-1" data-bs-toggle="tooltip" title="Reject"><i class="fas fa-times"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="View Details"><i class="fas fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#AD3241</td>
+                                        <td><img src="https://via.placeholder.com/50x50?text=Opal" class="rounded" alt="Opal"></td>
+                                        <td>Australian Black Opal - 4.5 Carats</td>
+                                        <td>OpalTrader</td>
+                                        <td>2025-03-14</td>
+                                        <td>$3,750</td>
+                                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success me-1" data-bs-toggle="tooltip" title="Approve"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-sm btn-danger me-1" data-bs-toggle="tooltip" title="Reject"><i class="fas fa-times"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="View Details"><i class="fas fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Recent Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    <i class="fas fa-user-plus text-success me-2"></i>
+                                    <span>New user registered</span>
+                                    <small class="text-muted ms-2">JewelryDesigner88</small>
+                                </div>
+                                <span class="text-muted">10 mins ago</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    <span>Ad approved</span>
+                                    <small class="text-muted ms-2">#AD3240 - Tanzanite Ring</small>
+                                </div>
+                                <span class="text-muted">35 mins ago</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    <i class="fas fa-times-circle text-danger me-2"></i>
+                                    <span>Ad rejected</span>
+                                    <small class="text-muted ms-2">#AD3239 - Synthetic Ruby</small>
+                                </div>
+                                <span class="text-muted">1 hour ago</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    <i class="fas fa-flag text-warning me-2"></i>
+                                    <span>Listing reported</span>
+                                    <small class="text-muted ms-2">#AD3215 - Emerald Necklace</small>
+                                </div>
+                                <span class="text-muted">2 hours ago</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    <i class="fas fa-dollar-sign text-success me-2"></i>
+                                    <span>Transaction completed</span>
+                                    <small class="text-muted ms-2">#TR8742 - $1,250</small>
+                                </div>
+                                <span class="text-muted">3 hours ago</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- System Status -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">System Status</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-server text-success me-2"></i>
+                                            <span>Server Status</span>
+                                        </div>
+                                        <span class="badge bg-success">Operational</span>
+                                    </li>
+                                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-database text-success me-2"></i>
+                                            <span>Database</span>
+                                        </div>
+                                        <span class="badge bg-success">Operational</span>
+                                    </li>
+                                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-credit-card text-success me-2"></i>
+                                            <span>Payment System</span>
+                                        </div>
+                                        <span class="badge bg-success">Operational</span>
+                                    </li>
+                                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-envelope text-warning me-2"></i>
+                                            <span>Email Service</span>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">Degraded</span>
+                                    </li>
+                                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-cloud text-success me-2"></i>
+                                            <span>Cloud Storage</span>
+                                        </div>
+                                        <span class="badge bg-success">Operational</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Quick Actions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus-circle me-2"></i>Add New Admin User
+                                    </button>
+                                    <button class="btn btn-success">
+                                        <i class="fas fa-gem me-2"></i>Create Featured Listing
+                                    </button>
+                                    <button class="btn btn-info text-white">
+                                        <i class="fas fa-envelope me-2"></i>Send Newsletter
+                                    </button>
+                                    <button class="btn btn-warning text-dark">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>System Maintenance
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <i class="fas fa-flag me-2"></i>Review Reported Items
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-3 bg-dark text-white mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2025 CeyGem. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-white-50">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize DataTables
+        $(document).ready(function() {
+            $('#pendingAdsTable').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                pageLength: 5,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            });
+            
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Ad approval/rejection functionality
+            $('.btn-success').click(function() {
+                alert('Ad approved successfully!');
+                $(this).closest('tr').find('.badge').removeClass('bg-warning text-dark').addClass('bg-success').text('Approved');
+            });
+            
+            $('.btn-danger').click(function() {
+                alert('Ad rejected!');
+                $(this).closest('tr').find('.badge').removeClass('bg-warning text-dark').addClass('bg-danger').text('Rejected');
+            });
+        });
+    </script>
+</body>
+</html>

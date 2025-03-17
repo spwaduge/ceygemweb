@@ -1,0 +1,311 @@
+/* 
+  GemMarket Custom Styles
+  A professional gem ad platform styling
+*/
+
+/* Main Colors:
+  Primary: #0d6efd (Bootstrap primary blue)
+  Secondary: #6c757d (Bootstrap secondary gray)
+  Success: #198754 (Bootstrap success green)
+  Info: #0dcaf0 (Bootstrap info cyan)
+  Warning: #ffc107 (Bootstrap warning yellow)
+  Danger: #dc3545 (Bootstrap danger red)
+  Light: #f8f9fa (Bootstrap light gray)
+  Dark: #212529 (Bootstrap dark gray)
+*/
+
+/* Global Styles */
+body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+/* Navbar Customizations */
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+}
+
+.hero-section h1 {
+    font-size: 2.8rem;
+    color: #212529;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 0.3rem;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-outline-primary {
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Feature Icons */
+.rounded-circle {
+    padding: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #212529;
+}
+
+footer a:hover {
+    color: white !important;
+}
+
+/* Form Styling */
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+input::placeholder, textarea::placeholder {
+    font-size: 0.875rem;
+    color: #adb5bd;
+}
+
+/* Badge Styling */
+.badge {
+    font-weight: 500;
+    padding: 0.35rem 0.65rem;
+}
+
+/* Social Icons */
+.social-icons a {
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+/* Auth Pages (Login/Register) */
+.auth-page .card {
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Account Dashboard */
+.account-sidebar .list-group-item.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Admin Dashboard */
+.admin-stats-card {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.admin-stats-card i {
+    opacity: 0.7;
+}
+
+/* Messages Page */
+.message-read {
+    background-color: #f8f9fa;
+}
+
+.message-unread {
+    font-weight: 600;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Product Details */
+.product-images .thumbnail {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.product-images .thumbnail:hover, .product-images .thumbnail.active {
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+/* Gem Filter Section */
+.filter-section {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.filter-section .form-label {
+    font-weight: 500;
+}
+
+/* Gem Detail Page */
+.gem-details .gem-price {
+    font-size: 2rem;
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+.gem-details .gem-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.gem-details .gem-specs {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.gem-details .gem-specs h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.gem-details .gem-specs p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* User Profile */
+.user-profile .user-stats {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f8f9fa;
+}
+
+.user-profile .user-stats h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.user-profile .user-stats p {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* Reviews Section */
+.review-item {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.review-item .reviewer-name {
+    font-weight: 600;
+}
+
+.review-item .review-date {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.star-rating {
+    color: #ffc107;
+}
+
+/* Call to Action Sections */
+.cta-section {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    color: white;
+    padding: 3rem 0;
+    border-radius: 0;
+}
+
+.cta-section h2 {
+    font-weight: 700;
+}
+
+/* Searchbar */
+.search-form .input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.search-form .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    padding-left: 1.5rem;
+}
+
+.search-form .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

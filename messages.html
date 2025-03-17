@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - CeyGem</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .messages-list {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .message-preview {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .message-preview:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        .message-preview.active {
+            background-color: rgba(13, 110, 253, 0.1);
+            border-left: 3px solid #0d6efd;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+        }
+        .chat-header {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .chat-input {
+            border-top: 1px solid #dee2e6;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .message-bubble {
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            position: relative;
+            word-wrap: break-word;
+        }
+        .message-received {
+            background-color: #e9ecef;
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+        }
+        .message-sent {
+            background-color: #0d6efd;
+            color: white;
+            border-bottom-right-radius: 5px;
+            align-self: flex-end;
+        }
+        .message-time {
+            font-size: 0.7rem;
+            color: #6c757d;
+            margin-top: 5px;
+            text-align: right;
+        }
+        .sent-time {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .contact-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .no-messages {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-gem me-2"></i>CeyGem
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Gems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="submit-ad.html">Submit Ad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="messages.html">Messages</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-2"></i>John Doe
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="account.html"><i class="fas fa-user me-2"></i>My Account</a></li>
+                        <li><a class="dropdown-item" href="my-listings.html"><i class="fas fa-list me-2"></i>My Listings</a></li>
+                        <li><a class="dropdown-item" href="favorites.html"><i class="fas fa-heart me-2"></i>Favorites</a></li>
+                        <li><a class="dropdown-item active" href="messages.html"><i class="fas fa-envelope me-2"></i>Messages</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4">Messages</h2>
+            
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <!-- Messages List -->
+                        <div class="col-md-4 border-end">
+                            <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Conversations</h5>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="tooltip" title="Refresh messages">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="New message">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="messages-list">
+                                <!-- Message 1 -->
+                                <div class="message-preview p-3 border-bottom active" data-contact="1">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/50" alt="Contact" class="contact-avatar me-3">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="mb-0">Emma Johnson</h6>
+                                                <small class="text-muted">10:45 AM</small>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="text-truncate mb-0 small">Is the Ruby still available? I'm interested in purchasing it.</p>
+                                                <span class="badge bg-primary rounded-pill ms-2">2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Message 2 -->
+                                <div class="message-preview p-3 border-bottom" data-contact="2">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/50" alt="Contact" class="contact-avatar me-3">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="mb-0">Michael Smith</h6>
+                                                <small class="text-muted">Yesterday</small>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="text-truncate mb-0 small">I'd like to know more about the certification of the Sapphire you listed.</p>
+                                                <span class="badge bg-primary rounded-pill ms-2">1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Message 3 -->
+                                <div class="message-preview p-3 border-bottom" data-contact="3">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/50" alt="Contact" class="contact-avatar me-3">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="mb-0">Sophia Williams</h6>
+                                                <small class="text-muted">Mar 14</small>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="text-truncate mb-0 small text-muted">Thanks for the information! I'll get back to you soon.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Message 4 -->
+                                <div class="message-preview p-3 border-bottom" data-contact="4">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/50" alt="Contact" class="contact-avatar me-3">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="mb-0">James Brown</h6>
+                                                <small class="text-muted">Mar 12</small>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="text-truncate mb-0 small text-muted">Would you consider an offer of $3,800 for the Emerald?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Message 5 -->
+                                <div class="message-preview p-3 border-bottom" data-contact="5">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/50" alt="Contact" class="contact-avatar me-3">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="mb-0">CeyGem Support</h6>
+                                                <small class="text-muted">Mar 10</small>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="text-truncate mb-0 small text-muted">Your listing has been approved. Congratulations!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Area -->
+                        <div class="col-md-8">
+                            <div class="chat-container">
+                                <!-- Chat Header -->
+                                <div class="chat-header d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/50" alt="Contact" class="contact-avatar me-3">
+                                        <div>
+                                            <h5 class="mb-0">Emma Johnson</h5>
+                                            <small class="text-muted">Last active: 5 min ago</small>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2" data-bs-toggle="tooltip" title="View profile">
+                                            <i class="fas fa-user"></i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-sm me-2" data-bs-toggle="tooltip" title="Call">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                        <div class="dropdown d-inline-block">
+                                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="chatOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="chatOptionsDropdown">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-archive me-2"></i>Archive conversation</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-bell-slash me-2"></i>Mute notifications</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i>Report user</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Delete conversation</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Chat Messages -->
+                                <div class="chat-messages d-flex flex-column" id="messageContainer">
+                                    <!-- Conversation date separator -->
+                                    <div class="text-center my-3">
+                                        <span class="badge bg-secondary">Today</span>
+                                    </div>
+                                    
+                                    <!-- Received message -->
+                                    <div class="message-bubble message-received">
+                                        <p class="mb-0">Hello, I'm interested in the Natural Ruby you listed. Is it still available?</p>
+                                        <div class="message-time">10:30 AM</div>
+                                    </div>
+                                    
+                                    <!-- Sent message -->
+                                    <div class="message-bubble message-sent">
+                                        <p class="mb-0">Hi Emma, yes the Ruby is still available! It's a beautiful 2.5 carat stone from Burma with excellent clarity.</p>
+                                        <div class="message-time sent-time">10:32 AM</div>
+                                    </div>
+                                    
+                                    <!-- Received message -->
+                                    <div class="message-bubble message-received">
+                                        <p class="mb-0">That sounds wonderful! Has it been heat treated or is it completely natural?</p>
+                                        <div class="message-time">10:38 AM</div>
+                                    </div>
+                                    
+                                    <!-- Received message -->
+                                    <div class="message-bubble message-received">
+                                        <p class="mb-0">Also, would you be able to provide any additional close-up photos showing the clarity?</p>
+                                        <div class="message-time">10:39 AM</div>
+                                    </div>
+                                    
+                                    <!-- Sent message -->
+                                    <div class="message-bubble message-sent">
+                                        <p class="mb-0">It's completely natural with no heat treatment. The GIA certificate confirms this. I'll be happy to send you some additional close-up photos showing the clarity. Would you prefer I send them here or via email?</p>
+                                        <div class="message-time sent-time">10:42 AM</div>
+                                    </div>
+                                    
+                                    <!-- Received message -->
+                                    <div class="message-bubble message-received">
+                                        <p class="mb-0">Here would be perfect. Is the price firm or would you consider offers?</p>
+                                        <div class="message-time">10:45 AM</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Chat Input -->
+                                <div class="chat-input">
+                                    <form id="messageForm">
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" title="Attach file">
+                                                <i class="fas fa-paperclip"></i>
+                                            </button>
+                                            <input type="text" class="form-control" placeholder="Type your message..." id="messageInput">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5><i class="fas fa-gem me-2"></i>CeyGem</h5>
+                    <p class="small">The premier marketplace for high-quality gemstones and jewelry.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="browse.html" class="text-decoration-none text-white-50">Browse Gems</a></li>
+                        <li><a href="submit-ad.html" class="text-decoration-none text-white-50">Submit Ad</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-decoration-none text-white-50">Login</a></li>
+                        <li><a href="register.html" class="text-decoration-none text-white-50">Register</a></li>
+                        <li><a href="account.html" class="text-decoration-none text-white-50">My Account</a></li>
+                        <li><a href="messages.html" class="text-decoration-none text-white-50">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p class="small">Subscribe to receive updates on new gem listings and marketplace news.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2025 CeyGem. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-white-50">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Chat message submission
+            document.getElementById('messageForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const messageInput = document.getElementById('messageInput');
+                const messageText = messageInput.value.trim();
+                
+                if (messageText !== '') {
+                    // Create message element
+                    const messageContainer = document.getElementById('messageContainer');
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message-bubble message-sent';
+                    
+                    // Get current time
+                    const now = new Date();
+                    const hours = now.getHours();
+                    const minutes = now.getMinutes();
+                    const ampm = hours >= 12 ? 'PM' : 'AM';
+                    const formattedHours = hours % 12 || 12;
+                    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+                    const timeString = `${formattedHours}:${formattedMinutes} ${ampm}`;
+                    
+                    // Set message content
+                    messageDiv.innerHTML = `
+                        <p class="mb-0">${messageText}</p>
+                        <div class="message-time sent-time">${timeString}</div>
+                    `;
+                    
+                    // Append message to container
+                    messageContainer.appendChild(messageDiv);
+                    
+                    // Clear input
+                    messageInput.value = '';
+                    
+                    // Scroll to bottom
+                    messageContainer.scrollTop = messageContainer.scrollHeight;
+                    
+                    // Simulate a reply after a short delay (for demo purposes)
+                    setTimeout(function() {
+                        const replyDiv = document.createElement('div');
+                        replyDiv.className = 'message-bubble message-received';
+                        replyDiv.innerHTML = `
+                            <p class="mb-0">Thanks for the response! I'm very interested in this ruby and would like to schedule a video call to see it in more detail if possible.</p>
+                            <div class="message-time">${timeString}</div>
+                        `;
+                        messageContainer.appendChild(replyDiv);
+                        messageContainer.scrollTop = messageContainer.scrollHeight;
+                    }, 2000);
+                }
+            });
+            
+            // Switch between conversations
+            const conversationPreviews = document.querySelectorAll('.message-preview');
+            conversationPreviews.forEach(preview => {
+                preview.addEventListener('click', function() {
+                    // Remove active class from all previews
+                    conversationPreviews.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked preview
+                    this.classList.add('active');
+                    
+                    // In a real app, you would load the conversation here
+                    // For demo, we'll just remove the badge
+                    const badge = this.querySelector('.badge');
+                    if (badge) {
+                        badge.remove();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

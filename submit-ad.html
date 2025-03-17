@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Ad - CeyGem</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Dropzone CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-gem me-2"></i>CeyGem
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Gems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="submit-ad.html">Submit Ad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.html">Messages</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-2"></i>John Doe
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="account.html"><i class="fas fa-user me-2"></i>My Account</a></li>
+                        <li><a class="dropdown-item" href="my-listings.html"><i class="fas fa-list me-2"></i>My Listings</a></li>
+                        <li><a class="dropdown-item" href="favorites.html"><i class="fas fa-heart me-2"></i>Favorites</a></li>
+                        <li><a class="dropdown-item" href="messages.html"><i class="fas fa-envelope me-2"></i>Messages</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Submit Ad Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white py-3">
+                            <h2 class="mb-0">Submit Your Gem Ad</h2>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="alert alert-info" role="alert">
+                                <i class="fas fa-info-circle me-2"></i>
+                                All listings are subject to review by our gemology team before being published. Please provide accurate and detailed information.
+                            </div>
+                            
+                            <form id="submitAdForm">
+                                <!-- Basic Information -->
+                                <h4 class="mb-3 mt-4">Basic Information</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="gemTitle" class="form-label">Ad Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="gemTitle" placeholder="e.g., Natural Ruby - 2.5 Carats" required>
+                                        <div class="form-text">Be descriptive and accurate. Include gem type and carat weight.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gemType" class="form-label">Gem Type <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="gemType" required>
+                                            <option value="" selected disabled>Select gem type</option>
+                                            <option value="ruby">Ruby</option>
+                                            <option value="sapphire">Sapphire</option>
+                                            <option value="emerald">Emerald</option>
+                                            <option value="diamond">Diamond</option>
+                                            <option value="opal">Opal</option>
+                                            <option value="tanzanite">Tanzanite</option>
+                                            <option value="aquamarine">Aquamarine</option>
+                                            <option value="amethyst">Amethyst</option>
+                                            <option value="topaz">Topaz</option>
+                                            <option value="jade">Jade</option>
+                                            <option value="tourmaline">Tourmaline</option>
+                                            <option value="other">Other (specify in description)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-4">
+                                        <label for="caratWeight" class="form-label">Carat Weight <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="caratWeight" step="0.01" min="0.01" placeholder="e.g., 2.5" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="price" class="form-label">Price (USD) <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="price" min="1" placeholder="e.g., 1500" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="condition" class="form-label">Condition <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="condition" required>
+                                            <option value="" selected disabled>Select condition</option>
+                                            <option value="new">New</option>
+                                            <option value="like-new">Like New</option>
+                                            <option value="excellent">Excellent</option>
+                                            <option value="good">Good</option>
+                                            <option value="fair">Fair</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Gem Details -->
+                                <h4 class="mb-3 mt-4">Gem Details</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="gemColor" class="form-label">Color</label>
+                                        <input type="text" class="form-control" id="gemColor" placeholder="e.g., Pigeon Blood Red">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="gemClarity" class="form-label">Clarity</label>
+                                        <input type="text" class="form-control" id="gemClarity" placeholder="e.g., VS, Slightly Included">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="gemCut" class="form-label">Cut</label>
+                                        <input type="text" class="form-control" id="gemCut" placeholder="e.g., Oval, Cushion">
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-6">
+                                        <label for="gemOrigin" class="form-label">Origin</label>
+                                        <input type="text" class="form-control" id="gemOrigin" placeholder="e.g., Burma, Sri Lanka">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gemTreatment" class="form-label">Treatment</label>
+                                        <select class="form-select" id="gemTreatment">
+                                            <option value="" selected disabled>Select treatment</option>
+                                            <option value="none">None (Natural)</option>
+                                            <option value="heated">Heated</option>
+                                            <option value="irradiated">Irradiated</option>
+                                            <option value="filled">Fracture Filled</option>
+                                            <option value="oiled">Oiled</option>
+                                            <option value="other">Other (specify in description)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3 mt-3">
+                                    <label for="gemDescription" class="form-label">Detailed Description <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="gemDescription" rows="5" placeholder="Provide detailed information about your gem including its history, unique features, any flaws, and why it's valuable..." required></textarea>
+                                    <div class="form-text">A detailed description helps potential buyers and increases your chances of selling.</div>
+                                </div>
+                                
+                                <!-- Certification -->
+                                <h4 class="mb-3 mt-4">Certification (if applicable)</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="certType" class="form-label">Certification Type</label>
+                                        <select class="form-select" id="certType">
+                                            <option value="" selected>None</option>
+                                            <option value="gia">GIA</option>
+                                            <option value="igi">IGI</option>
+                                            <option value="ags">AGS</option>
+                                            <option value="hrd">HRD</option>
+                                            <option value="gubelin">Gubelin</option>
+                                            <option value="ssef">SSEF</option>
+                                            <option value="agl">AGL</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="certNumber" class="form-label">Certification Number</label>
+                                        <input type="text" class="form-control" id="certNumber" placeholder="e.g., GIA 2141438171">
+                                    </div>
+                                </div>
+                                
+                                <!-- Photo Upload -->
+                                <h4 class="mb-3 mt-4">Photos <span class="text-danger">*</span></h4>
+                                <div class="mb-3">
+                                    <div id="photoUpload" class="dropzone">
+                                        <div class="dz-message">
+                                            <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                                            <h5>Drop files here or click to upload</h5>
+                                            <p class="text-muted">Upload at least 3 high-quality photos from different angles. Max 10 photos.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-text mt-2">
+                                        <ul>
+                                            <li>Main photo should show the entire gem in natural light</li>
+                                            <li>Include close-ups showing clarity and color</li>
+                                            <li>If certified, include a photo of the certificate</li>
+                                            <li>File formats: JPG, PNG, WEBP (Max 5MB each)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contact Preferences -->
+                                <h4 class="mb-3 mt-4">Contact Preferences</h4>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="allowMessages" checked>
+                                        <label class="form-check-label" for="allowMessages">
+                                            Allow potential buyers to send messages through CeyGem
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="showPhone">
+                                        <label class="form-check-label" for="showPhone">
+                                            Display my phone number on the listing
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="showEmail">
+                                        <label class="form-check-label" for="showEmail">
+                                            Display my email on the listing
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Terms and Conditions -->
+                                <div class="mb-4 mt-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="termsAgree" required>
+                                        <label class="form-check-label" for="termsAgree">
+                                            I confirm that the information provided is accurate and I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Selling Policies</a>.
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submission Buttons -->
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn btn-outline-secondary btn-lg" id="saveAsDraft">Save as Draft</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit Ad for Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5><i class="fas fa-gem me-2"></i>CeyGem</h5>
+                    <p class="small">The premier marketplace for high-quality gemstones and jewelry.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="browse.html" class="text-decoration-none text-white-50">Browse Gems</a></li>
+                        <li><a href="submit-ad.html" class="text-decoration-none text-white-50">Submit Ad</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-decoration-none text-white-50">Login</a></li>
+                        <li><a href="register.html" class="text-decoration-none text-white-50">Register</a></li>
+                        <li><a href="account.html" class="text-decoration-none text-white-50">My Account</a></li>
+                        <li><a href="messages.html" class="text-decoration-none text-white-50">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p class="small">Subscribe to receive updates on new gem listings and marketplace news.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2025 CeyGem. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-white-50">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Dropzone JavaScript -->
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize Dropzone
+        Dropzone.autoDiscover = false;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var myDropzone = new Dropzone("#photoUpload", {
+                url: "/file/upload", // Replace with your upload endpoint
+                maxFiles: 10,
+                maxFilesize: 5, // MB
+                acceptedFiles: "image/jpeg,image/png,image/webp",
+                addRemoveLinks: true,
+                dictRemoveFile: "Remove",
+                autoProcessQueue: false
+            });
+            
+            // Form submission
+            document.getElementById('submitAdForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate if photos uploaded
+                if (myDropzone.files.length < 1) {
+                    alert('Please upload at least one photo of your gem.');
+                    return;
+                }
+                
+                // Here you would typically process the queue and send form data
+                // For demo, we'll just show a success message
+                alert('Your ad has been submitted for review. Our gemologists will evaluate it and it should be published within 24-48 hours if approved.');
+                
+                // Redirect to a success page or my listings
+                setTimeout(function() {
+                    window.location.href = 'my-listings.html';
+                }, 1500);
+            });
+            
+            // Save as draft functionality
+            document.getElementById('saveAsDraft').addEventListener('click', function() {
+                alert('Your ad has been saved as a draft. You can find it in your account under "My Listings".');
+            });
+        });
+    </script>
+</body>
+</html>
