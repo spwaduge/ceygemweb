@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Gems - CeyGem</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-gem me-2"></i>CeyGem
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="browse.html">Browse Gems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="submit-ad.html">Submit Ad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.html">Messages</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.html" class="btn btn-light">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-light py-4">
+        <div class="container">
+            <h1 class="mb-0">Browse Gems</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Browse Gems</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row">
+            <!-- Filters Sidebar -->
+            <div class="col-lg-3 mb-4 mb-lg-0">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Filters</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <!-- Gem Type -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Gem Type</h6>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="ruby" checked>
+                                    <label class="form-check-label" for="ruby">Ruby</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="sapphire" checked>
+                                    <label class="form-check-label" for="sapphire">Sapphire</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="emerald" checked>
+                                    <label class="form-check-label" for="emerald">Emerald</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="amethyst" checked>
+                                    <label class="form-check-label" for="amethyst">Amethyst</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="tanzanite" checked>
+                                    <label class="form-check-label" for="tanzanite">Tanzanite</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="aquamarine" checked>
+                                    <label class="form-check-label" for="aquamarine">Aquamarine</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="topaz" checked>
+                                    <label class="form-check-label" for="topaz">Topaz</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="opal" checked>
+                                    <label class="form-check-label" for="opal">Opal</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="other" checked>
+                                    <label class="form-check-label" for="other">Other</label>
+                                </div>
+                            </div>
+
+                            <!-- Price Range -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Price Range</h6>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="me-2">$</span>
+                                    <input type="number" class="form-control form-control-sm" placeholder="Min">
+                                    <span class="mx-2">to</span>
+                                    <input type="number" class="form-control form-control-sm" placeholder="Max">
+                                </div>
+                                <div class="mt-3">
+                                    <input type="range" class="form-range" min="0" max="10000" id="priceRange">
+                                    <div class="d-flex justify-content-between small text-muted">
+                                        <span>$0</span>
+                                        <span>$10,000+</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Carat Range -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Carat Range</h6>
+                                <div class="d-flex align-items-center mb-2">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Min">
+                                    <span class="mx-2">to</span>
+                                    <input type="number" class="form-control form-control-sm" placeholder="Max">
+                                </div>
+                                <div class="mt-3">
+                                    <input type="range" class="form-range" min="0" max="10" step="0.1" id="caratRange">
+                                    <div class="d-flex justify-content-between small text-muted">
+                                        <span>0 ct</span>
+                                        <span>10+ ct</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cut -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Cut</h6>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="round" checked>
+                                    <label class="form-check-label" for="round">Round</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="oval" checked>
+                                    <label class="form-check-label" for="oval">Oval</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="princess" checked>
+                                    <label class="form-check-label" for="princess">Princess</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="cushion" checked>
+                                    <label class="form-check-label" for="cushion">Cushion</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="emerald-cut" checked>
+                                    <label class="form-check-label" for="emerald-cut">Emerald Cut</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="other-cut" checked>
+                                    <label class="form-check-label" for="other-cut">Other</label>
+                                </div>
+                            </div>
+
+                            <!-- Certification -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Certification</h6>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="gia" checked>
+                                    <label class="form-check-label" for="gia">GIA</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="igi" checked>
+                                    <label class="form-check-label" for="igi">IGI</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="agta" checked>
+                                    <label class="form-check-label" for="agta">AGTA</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="uncertified">
+                                    <label class="form-check-label" for="uncertified">Uncertified</label>
+                                </div>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Location</h6>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Worldwide</option>
+                                    <option>North America</option>
+                                    <option>Europe</option>
+                                    <option>Asia</option>
+                                    <option>Africa</option>
+                                    <option>Australia</option>
+                                    <option>South America</option>
+                                </select>
+                            </div>
+
+                            <!-- Apply Button -->
+                            <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                            <button type="reset" class="btn btn-outline-secondary w-100 mt-2">Reset Filters</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gem Listings -->
+            <div class="col-lg-9">
+                <!-- Search and Sort Bar -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for gems...">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-md-end">
+                                <div class="d-flex align-items-center">
+                                    <label class="me-2 text-nowrap">Sort by:</label>
+                                    <select class="form-select form-select-sm">
+                                        <option selected>Newest Listings</option>
+                                        <option>Price: Low to High</option>
+                                        <option>Price: High to Low</option>
+                                        <option>Carat: Low to High</option>
+                                        <option>Carat: High to Low</option>
+                                        <option>Most Popular</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Count and View Toggle -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <p class="mb-0">Showing <strong>1-16</strong> of <strong>128</strong> gems</p>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gem Grid -->
+                <div class="row g-4">
+                    <!-- Gem 1 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Ruby" class="card-img-top" alt="Ruby">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Premium</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Natural Ruby - 3.5 Carats</h5>
+                                <p class="card-text small">Burmese ruby with excellent clarity and vibrant red color. GIA certified.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$2,500</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 2 days ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 2 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Sapphire" class="card-img-top" alt="Sapphire">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Featured</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Ceylon Sapphire - 2 Carats</h5>
+                                <p class="card-text small">Exceptional blue sapphire from Sri Lanka with perfect cut and clarity. GIA certified.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$3,200</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 1 day ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Emerald" class="card-img-top" alt="Emerald">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">New</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Colombian Emerald - 1.8 Carats</h5>
+                                <p class="card-text small">Vibrant green Colombian emerald with minimal inclusions. Perfect for a statement piece.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$4,100</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 5 hours ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 4 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Amethyst" class="card-img-top" alt="Amethyst">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Popular</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Brazilian Amethyst - 4 Carats</h5>
+                                <p class="card-text small">Deep purple Brazilian amethyst with excellent transparency and natural brilliance.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$1,800</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 3 days ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 5 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Tanzanite" class="card-img-top" alt="Tanzanite">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Rare</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">AAA Tanzanite - 2.3 Carats</h5>
+                                <p class="card-text small">Exceptional blue-violet tanzanite with superior color and clarity. Certified origin.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$3,750</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 1 week ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 6 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Aquamarine" class="card-img-top" alt="Aquamarine">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Featured</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Aquamarine - 3.1 Carats</h5>
+                                <p class="card-text small">Crystal clear aquamarine with perfect sea-blue color. Expertly cut for maximum brilliance.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$2,950</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 4 days ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 7 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Topaz" class="card-img-top" alt="Topaz">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Exclusive</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Imperial Topaz - 2.7 Carats</h5>
+                                <p class="card-text small">Luxurious imperial topaz with rare peachy-pink hue. Perfect for collectors and jewelry.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$2,200</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 6 days ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 8 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Opal" class="card-img-top" alt="Opal">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">New</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Australian Opal - 2.4 Carats</h5>
+                                <p class="card-text small">Stunning Australian black opal with vivid play of colors. Ethically sourced and certified.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$5,400</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 1 day ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 9 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Diamond" class="card-img-top" alt="Diamond">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Premium</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Cushion Cut Diamond - 1.2 Carats</h5>
+                                <p class="card-text small">VS1 clarity, F color cushion cut diamond. Excellent polish and symmetry. GIA certified.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$8,900</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 2 weeks ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 10 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Garnet" class="card-img-top" alt="Garnet">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Featured</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Tsavorite Garnet - 1.5 Carats</h5>
+                                <p class="card-text small">Rare green tsavorite garnet with superb color saturation. Expertly cut and polished.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$3,850</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 3 days ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gem 11 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/300x200?text=Tourmaline" class="card-img-top" alt="Tourmaline">
+                                <span class="badge bg-primary position-absolute top-0 end-0 m-2">Rare</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Paraiba Tourmaline - 0.9 Carats</h5>
+                                <p class="card-text small">Electric neon blue Paraiba tourmaline from Brazil. Extremely rare collector's gem.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="h5 text-primary">$7,200</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Listed 5 days ago</small>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5><i class="fas fa-gem me-2"></i>CeyGem</h5>
+                    <p class="small">The premier marketplace for high-quality gemstones and jewelry.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="browse.html" class="text-decoration-none text-white-50">Browse Gems</a></li>
+                        <li><a href="submit-ad.html" class="text-decoration-none text-white-50">Submit Ad</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-decoration-none text-white-50">Login</a></li>
+                        <li><a href="register.html" class="text-decoration-none text-white-50">Register</a></li>
+                        <li><a href="account.html" class="text-decoration-none text-white-50">My Account</a></li>
+                        <li><a href="messages.html" class="text-decoration-none text-white-50">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p class="small">Subscribe to receive updates on new gem listings and marketplace news.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2025 CeyGem. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-white-50">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
