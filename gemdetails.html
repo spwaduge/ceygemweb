@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Sapphire - CeyGem</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .gem-image {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gem-image:hover {
+            transform: scale(1.05);
+        }
+        .price-badge {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .seller-rating {
+            color: #ffc107;
+        }
+        .specification-table td {
+            border: none;
+            padding: 0.75rem 0;
+        }
+        .specification-table tr:not(:last-child) {
+            border-bottom: 1px solid #e9ecef;
+        }
+        .contact-sticky {
+            position: sticky;
+            top: 100px;
+        }
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+        }
+        .gem-gallery img {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gem-gallery img:hover {
+            opacity: 0.8;
+        }
+        .badge-authentic {
+            background: linear-gradient(45deg, #28a745, #20c997);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-gem me-2"></i>CeyGem
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="browse.html">Browse Gems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="submit-ad.html">Submit Ad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.html">Messages</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-2"></i>John Doe
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="account.html"><i class="fas fa-user me-2"></i>My Account</a></li>
+                        <li><a class="dropdown-item" href="my-listings.html"><i class="fas fa-list me-2"></i>My Listings</a></li>
+                        <li><a class="dropdown-item" href="favorites.html"><i class="fas fa-heart me-2"></i>Favorites</a></li>
+                        <li><a class="dropdown-item" href="messages.html"><i class="fas fa-envelope me-2"></i>Messages</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="py-3 bg-light">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item"><a href="browse.html" class="text-decoration-none">Browse Gems</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Sapphire</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blue Sapphire - 5.2ct</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Gem Details Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Gem Images -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-0">
+                            <!-- Main Image -->
+                            <div class="text-center mb-3">
+                                <img id="mainImage" src="https://via.placeholder.com/500x400/4169E1/FFFFFF?text=Blue+Sapphire" 
+                                     class="img-fluid gem-image" alt="Blue Sapphire" 
+                                     data-bs-toggle="modal" data-bs-target="#imageModal">
+                            </div>
+                            
+                            <!-- Thumbnail Gallery -->
+                            <div class="gem-gallery px-3 pb-3">
+                                <div class="row g-2">
+                                    <div class="col-3">
+                                        <img src="https://via.placeholder.com/100x80/4169E1/FFFFFF?text=View+1" 
+                                             class="img-fluid rounded border" alt="View 1" 
+                                             onclick="changeMainImage(this.src.replace('100x80', '500x400'))">
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="https://via.placeholder.com/100x80/1E90FF/FFFFFF?text=View+2" 
+                                             class="img-fluid rounded border" alt="View 2"
+                                             onclick="changeMainImage(this.src.replace('100x80', '500x400'))">
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="https://via.placeholder.com/100x80/0000FF/FFFFFF?text=View+3" 
+                                             class="img-fluid rounded border" alt="View 3"
+                                             onclick="changeMainImage(this.src.replace('100x80', '500x400'))">
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="https://via.placeholder.com/100x80/000080/FFFFFF?text=View+4" 
+                                             class="img-fluid rounded border" alt="View 4"
+                                             onclick="changeMainImage(this.src.replace('100x80', '500x400'))">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gem Information -->
+                <div class="col-lg-6">
+                    <div class="mb-4">
+                        <h1 class="h2 mb-3">Premium Blue Sapphire</h1>
+                        <div class="mb-3">
+                            <span class="badge badge-authentic text-white me-2">
+                                <i class="fas fa-certificate me-1"></i>Certified Authentic
+                            </span>
+                            <span class="badge bg-primary">Premium Quality</span>
+                            <span class="badge bg-success ms-1">In Stock</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="price-badge text-primary me-3">$12,500</span>
+                            <small class="text-muted">Price per carat: $2,404</small>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="seller-rating me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <small class="text-muted">(4.9/5 from 127 reviews)</small>
+                        </div>
+                        
+                        <!-- Quick Actions -->
+                        <div class="d-grid gap-2 d-md-flex mb-4">
+                            <button class="btn btn-primary btn-lg" type="button">
+                                <i class="fas fa-envelope me-2"></i>Contact Seller
+                            </button>
+                            <button class="btn btn-outline-danger" type="button">
+                                <i class="fas fa-heart me-2"></i>Add to Favorites
+                            </button>
+                            <button class="btn btn-outline-secondary" type="button">
+                                <i class="fas fa-share me-2"></i>Share
+                            </button>
+                        </div>
+                        
+                        <!-- Description -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Description</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">This exceptional blue sapphire showcases the finest qualities of Ceylon sapphires. The stone exhibits a vivid cornflower blue color with excellent clarity and brilliance. Cut to perfection with optimal proportions, this gem displays exceptional fire and scintillation. Sourced directly from the famous gem mines of Ratnapura, Sri Lanka, this sapphire comes with full certification and provenance documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <!-- Specifications -->
+                <div class="col-lg-8 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Gem Specifications</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table specification-table">
+                                        <tr>
+                                            <td class="fw-bold">Gemstone Type:</td>
+                                            <td>Natural Sapphire</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Weight:</td>
+                                            <td>5.2 Carats</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Color:</td>
+                                            <td>Vivid Blue</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Clarity:</td>
+                                            <td>VVS (Very Very Slightly Included)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Cut:</td>
+                                            <td>Oval Brilliant</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table specification-table">
+                                        <tr>
+                                            <td class="fw-bold">Dimensions:</td>
+                                            <td>12.1 x 9.8 x 6.2 mm</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Origin:</td>
+                                            <td>Ceylon (Sri Lanka)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Treatment:</td>
+                                            <td>Heat Treated</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Certificate:</td>
+                                            <td>GIA Certified</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Fluorescence:</td>
+                                            <td>None</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certification -->
+                    <div class="card shadow-sm mt-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Certification & Authentication</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h6><i class="fas fa-certificate text-primary me-2"></i>GIA Certificate #2185749632</h6>
+                                    <p class="mb-2">This sapphire has been professionally evaluated and certified by the Gemological Institute of America (GIA). The certificate confirms the gem's natural origin, treatment disclosure, and detailed gemological properties.</p>
+                                    <div class="mt-3">
+                                        <span class="badge bg-success me-2">
+                                            <i class="fas fa-check me-1"></i>Natural Stone
+                                        </span>
+                                        <span class="badge bg-info me-2">
+                                            <i class="fas fa-shield-alt me-1"></i>Authenticated
+                                        </span>
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-file-alt me-1"></i>Full Documentation
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <img src="https://via.placeholder.com/120x80/E8E8E8/666666?text=GIA+CERT" 
+                                         class="img-fluid border rounded" alt="GIA Certificate">
+                                    <div class="mt-2">
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-download me-1"></i>View Certificate
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seller Information -->
+                <div class="col-lg-4">
+                    <div class="contact-sticky">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Seller Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://via.placeholder.com/60" class="rounded-circle me-3" alt="Seller">
+                                    <div>
+                                        <h6 class="mb-1">Ceylon Gems Ltd.</h6>
+                                        <div class="seller-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-muted ms-1">(4.9)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="badge bg-success me-1">Verified Seller</span>
+                                    <span class="badge bg-primary">Premium Member</span>
+                                </div>
+                                <div class="small text-muted mb-3">
+                                    <p><i class="fas fa-map-marker-alt me-2"></i>Colombo, Sri Lanka</p>
+                                    <p><i class="fas fa-clock me-2"></i>Member since 2018</p>
+                                    <p><i class="fas fa-gem me-2"></i>347 gems sold</p>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                        <i class="fas fa-envelope me-2"></i>Send Message
+                                    </button>
+                                    <button class="btn btn-outline-primary" type="button">
+                                        <i class="fas fa-phone me-2"></i>Call Seller
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fas fa-store me-2"></i>View Store
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="card shadow-sm mt-4">
+                            <div class="card-header bg-white">
+                                <h6 class="mb-0">Listing Stats</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="small text-muted">Views</div>
+                                        <div class="fw-bold">1,247</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="small text-muted">Inquiries</div>
+                                        <div class="fw-bold">23</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="small text-muted">Listed</div>
+                                        <div class="fw-bold">5 days</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Blue Sapphire - Detailed View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="https://via.placeholder.com/600x500/4169E1/FFFFFF?text=Blue+Sapphire" 
+                         class="img-fluid" alt="Blue Sapphire Large View">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Seller</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="messageSubject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="messageSubject" value="Inquiry about Blue Sapphire - 5.2ct">
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageText" class="form-label">Message</label>
+                            <textarea class="form-control" id="messageText" rows="4" placeholder="Hi, I'm interested in this blue sapphire. Could you provide more details about..."></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="includeContact" checked>
+                            <label class="form-check-label" for="includeContact">
+                                Include my contact information
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="sendMessage()">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5><i class="fas fa-gem me-2"></i>CeyGem</h5>
+                    <p class="small">The premier marketplace for high-quality gemstones and jewelry.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="browse.html" class="text-decoration-none text-white-50">Browse Gems</a></li>
+                        <li><a href="submit-ad.html" class="text-decoration-none text-white-50">Submit Ad</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-decoration-none text-white-50">Login</a></li>
+                        <li><a href="register.html" class="text-decoration-none text-white-50">Register</a></li>
+                        <li><a href="account.html" class="text-decoration-none text-white-50">My Account</a></li>
+                        <li><a href="messages.html" class="text-decoration-none text-white-50">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p class="small">Subscribe to receive updates on new gem listings and marketplace news.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2025 CeyGem. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-white-50 me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-white-50">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Change main image function
+        function changeMainImage(src) {
+            document.getElementById('mainImage').src = src;
+            document.getElementById('modalImage').src = src.replace('500x400', '600x500');
+        }
+        
+        // Send message function
+        function sendMessage() {
+            const subject = document.getElementById('messageSubject').value;
+            const message = document.getElementById('messageText').value;
+            
+            if (!message.trim()) {
+                alert('Please enter a message.');
+                return;
+            }
+            
+            // For demo purposes only - would be replaced with actual API call
+            alert('Message sent successfully! The seller will respond within 24 hours.');
+            
+            // Close modal and reset form
+            bootstrap.Modal.getInstance(document.getElementById('contactModal')).hide();
+            document.getElementById('contactForm').reset();
+        }
+        
+        // Update modal image when main image is clicked
+        document.getElementById('mainImage').addEventListener('click', function() {
+            document.getElementById('modalImage').src = this.src.replace('500x400', '600x500');
+        });
+    </script>
+</body>
+</html>
